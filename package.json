@@ -11,6 +11,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "antd": "^4.15.1",
+    "qs": "^6.10.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
@@ -24,7 +25,7 @@
     "eject": "react-scripts eject",
     "prepare": "husky install",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "json-server": "json-server __json_server_mock__/db.json --watch"
+    "json-server": "json-server __json_server_mock__/db.json --watch --port 3001"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +49,7 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "@types/qs": "^6.9.6",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^6.0.0",
     "prettier": "2.3.0"
