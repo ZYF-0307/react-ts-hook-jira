@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 export const isFalsy = (value: unknown) => {
   return value === 0 ? false : !value;
 };
@@ -16,4 +18,24 @@ export const cleanObject = (object?: { [key: string]: unknown }) => {
     }
   });
   return result;
+};
+
+export const useMount = (callback: () => void) => {
+  useEffect(() => {
+    callback();
+  }, []);
+};
+
+export const useDebounce = (value: any, delay: any) => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+    // 每次在上一个UseEffect处理完以后再运行
+    return () => clearTimeout(timeout);
+  }, [value, delay]);
+
+  return debouncedValue;
 };

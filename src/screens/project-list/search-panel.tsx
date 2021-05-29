@@ -20,11 +20,11 @@ export const SearchPanel = ({
           <Input
             placeholder="项目名"
             type="text"
-            value={searchParams.groupName}
+            value={searchParams.name}
             onChange={(event) =>
               setSearchParams({
                 ...searchParams,
-                groupName: event.target.value,
+                name: event.target.value,
               })
             }
           />
