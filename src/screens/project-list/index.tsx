@@ -9,9 +9,9 @@ const URL = process.env.REACT_APP_API_URL;
 export const ProjectListScreen = () => {
   const [searchParams, setSearchParams] = useState({
     name: "",
-    personId: "",
+    // personId: 0,
   });
-  const debouncedSearchParams = useDebounce(searchParams, 2000);
+  const debouncedSearchParams = useDebounce(searchParams, 200);
   const [users, setUsers] = useState([]);
   const [projects, setProjects] = useState([]);
   useMount(() => {
@@ -35,7 +35,7 @@ export const ProjectListScreen = () => {
         setSearchParams={setSearchParams}
         users={users}
       />
-      <List users={users} projects={projects} />
+      <List users={users} list={projects} />
     </>
   );
 };
