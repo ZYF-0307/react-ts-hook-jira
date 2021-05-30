@@ -1,11 +1,23 @@
 import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 
-export const LoginScreen = () => {
-  const handleSubmit = () => {
+const apiUrl = process.env.REACT_APP_API_URL;
 
-  }
-  const isLoading = false
+export const LoginScreen = () => {
+  const handleSubmit = (value: { username: string; password: string }) => {
+    fetch(`${apiUrl}/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(value),
+    }).then(async (response) => {
+      if (response.ok) {
+        console.log("登录成功");
+      }
+    });
+  };
+  const isLoading = false;
   return (
     <Form onFinish={handleSubmit}>
       <Form.Item
@@ -26,5 +38,5 @@ export const LoginScreen = () => {
         </Button>
       </Form.Item>
     </Form>
-  )
-}
+  );
+};
