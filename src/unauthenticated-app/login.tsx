@@ -1,21 +1,11 @@
 import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
-
-const apiUrl = process.env.REACT_APP_API_URL;
+import { useAuth } from "context/auth-context";
 
 export const LoginScreen = () => {
+  const { login, user } = useAuth();
   const handleSubmit = (value: { username: string; password: string }) => {
-    fetch(`${apiUrl}/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(value),
-    }).then(async (response) => {
-      if (response.ok) {
-        console.log("登录成功");
-      }
-    });
+    login(value);
   };
   const isLoading = false;
   return (

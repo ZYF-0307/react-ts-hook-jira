@@ -4,9 +4,12 @@ import { List } from "screens/project-list/list";
 
 import { cleanObject, useMount, useDebounce } from "utils";
 import qs from "qs";
+import { useHttp } from "utils/http";
 
 const URL = process.env.REACT_APP_API_URL;
 export const ProjectListScreen = () => {
+  const client = useHttp();
+
   const [searchParams, setSearchParams] = useState({
     name: "",
     // personId: 0,
@@ -14,19 +17,18 @@ export const ProjectListScreen = () => {
   const debouncedSearchParams = useDebounce(searchParams, 200);
   const [users, setUsers] = useState([]);
   const [projects, setProjects] = useState([]);
+
   useMount(() => {
-    fetch(`${URL}/users`).then(async (response) => {
-      const users = await response.json();
-      setUsers(users);
+    client("users").then(async (response) => {
+      setUsers(response);
     });
   });
   useEffect(() => {
-    fetch(
-      `${URL}/projects?${qs.stringify(cleanObject(debouncedSearchParams))}`
-    ).then(async (response) => {
-      const projects = await response.json();
-      setProjects(projects);
-    });
+    client("projects", { data: cleanObject(debouncedSearchParams) }).then(
+      async (response) => {
+        setProjects(response);
+      }
+    );
   }, [debouncedSearchParams]);
   return (
     <>

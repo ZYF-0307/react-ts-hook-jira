@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
+import { useAuth } from "context/auth-context";
 
 export const RegisterScreen = () => {
-  const handleSubmit = () => {
-
-  }
-  const isLoading = false
+  const { register, user } = useAuth();
+  const handleSubmit = (value: { username: string; password: string }) => {
+    register(value);
+  };
+  const isLoading = false;
   return (
     <Form onFinish={handleSubmit}>
       <Form.Item
@@ -32,5 +34,5 @@ export const RegisterScreen = () => {
         </Button>
       </Form.Item>
     </Form>
-  )
-}
+  );
+};
