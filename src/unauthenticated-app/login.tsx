@@ -23,7 +23,7 @@ export const LoginScreen = () => {
         <Input placeholder={"密码"} type="password" id={"password"} />
       </Form.Item>
       <Form.Item>
-        <Button loading={isLoading} htmlType={"submit"} type={"primary"}>
+        <Button loading={isLoading} htmlType={"submit"} type={"primary"} block>
           登录
         </Button>
       </Form.Item>
