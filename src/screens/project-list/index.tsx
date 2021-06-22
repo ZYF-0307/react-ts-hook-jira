@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { SearchPanel } from "screens/project-list/search-panel";
 import { List } from "screens/project-list/list";
+import { ScreenContainer } from "components/lib";
 
 import { cleanObject, useMount, useDebounce } from "utils";
 import qs from "qs";
@@ -31,13 +32,13 @@ export const ProjectListScreen = () => {
     );
   }, [debouncedSearchParams]);
   return (
-    <>
+    <ScreenContainer>
       <SearchPanel
         searchParams={searchParams}
         setSearchParams={setSearchParams}
         users={users}
       />
       <List users={users} list={projects} />
-    </>
+    </ScreenContainer>
   );
 };

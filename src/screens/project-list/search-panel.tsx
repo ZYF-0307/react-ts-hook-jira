@@ -27,7 +27,7 @@ export const SearchPanel = ({
 }: SearchPanelProps) => {
   return (
     <>
-      <Form layout="inline">
+      <Form layout="inline" style={{ marginBottom: "2rem" }}>
         <Form.Item>
           <Input
             placeholder="项目名"
