@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-import React from "react";
-import { Button, Spin, Typography } from "antd";
+import { Button } from "antd";
 
 export const Row = styled.div<{
   gap?: number | boolean;

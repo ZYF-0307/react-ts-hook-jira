@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { IdSelect } from "components/id-select";
 import { useHttp } from "utils/http";
 import { useMount } from "utils";
@@ -16,12 +16,6 @@ export const UserSelect = (props: React.ComponentProps<typeof IdSelect>) => {
       setUserList(response);
     });
   });
-  // useEffect(() => {
-  //   fetch(`${URL}/users`).then(async (response) => {
-  //     const userList = await response.json();
-  //     setUserList(userList);
-  //   });
-  // }, []);
   return (
     <>
       <IdSelect options={userList} {...props} />

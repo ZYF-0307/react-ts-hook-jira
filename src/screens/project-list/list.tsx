@@ -56,7 +56,7 @@ export const List = ({ users, list }: ListProps) => {
   ];
   return (
     <>
-      <Table dataSource={list} columns={columns} />
+      <Table dataSource={list} columns={columns} rowKey="id" />
     </>
   );
 };

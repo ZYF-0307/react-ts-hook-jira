@@ -1,9 +1,8 @@
-import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { useAuth } from "context/auth-context";
 
 export const RegisterScreen = () => {
-  const { register, user } = useAuth();
+  const { register } = useAuth();
   const handleSubmit = (value: { username: string; password: string }) => {
     register(value);
   };

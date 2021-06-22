@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { SearchPanel } from "screens/project-list/search-panel";
 import { List } from "screens/project-list/list";
 import { ScreenContainer } from "components/lib";
 
 import { cleanObject, useMount, useDebounce } from "utils";
-import qs from "qs";
 import { useHttp } from "utils/http";
 
-const URL = process.env.REACT_APP_API_URL;
 export const ProjectListScreen = () => {
   const client = useHttp();
 
@@ -30,6 +28,7 @@ export const ProjectListScreen = () => {
         setProjects(response);
       }
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearchParams]);
   return (
     <ScreenContainer>
